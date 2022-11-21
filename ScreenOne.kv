@@ -1,0 +1,32 @@
+
+<Screen1>:
+    name: "Page1"
+    BoxLayout:
+        orientation: "vertical"
+        padding: "25dp"
+        Label:
+            size_hint: 1, .2
+        Image:
+            source: "undraw_art_lover_re_fn8g 2.png"
+            allow_stretch: True
+            keep_ratio: True
+
+        MDLabel:
+            text: "Easy way to attend art auction and  \\nPurchase art product from the corner of\\n your home."
+            halign: "center"
+            bold: True
+            font_name: "arialbd.ttf"
+
+
+        MDTextButton:
+            text: "skip"
+            pos_hint: {"x": .8}
+            font_name: "arialbd.ttf"
+            on_press:
+                root.manager.current = "Page2"
+                root.manager.transition.direction = "left"
+
+
+        Screen:
+            size_hint: 1, .06
+
