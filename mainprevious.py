@@ -28,20 +28,17 @@ import time
 # import stagger
 
 
-#Window.size = (dp(400), Window.height)
+Window.size = (dp(400), Window.height)
 print(Window.height)
 
 Code = """
 #: import ew kivy.uix.effectwidget
-#: import sm kivy.uix.screenmanager
 
 MDNavigationLayout:
 ######################################
 ############# Custom ScreenManager ####
     MyScreenManager:
         id: my_manager
-        #transition: sm.WipeTransition()
-    
 
 
 ######################################
@@ -327,7 +324,6 @@ MDNavigationLayout:
                             		orientation: "vertical"
                             		size_hint_y: None
                             		height: self.minimum_height
-        							
                             Label:
                             	size_hint_y: None
                             	height: dp(100)
@@ -535,20 +531,20 @@ MDNavigationLayout:
                     size_hint_y: None
                     height: dp(50)
                     
-                    #MDFloatingActionButton:
-#				        id: float_btn
-#				        icon: "home"
-#				        x: folder_music.center_x - self.width/2
-#				        y: folder_music.y - self.height/2
-#				        #md_bg_color: (1, .5, 0, 1)
-#				        on_release: root.ids.my_manager.current = "home screen"
-#				        canvas.before:
-#				            Color:
-#				                rgba: root.md_bg_color
-#				                rgba: 1, 1, 1, 1
-#				            Ellipse:
-#				                pos: self.x - dp(10/2), self.y - dp(10/2)
-#				                size: self.width + dp(10), self.height + dp(10)                               
+                    MDFloatingActionButton:
+				        id: float_btn
+				        icon: "home"
+				        x: folder_music.center_x - self.width/2
+				        y: folder_music.y - self.height/2
+				        #md_bg_color: (1, .5, 0, 1)
+				        on_release: root.ids.my_manager.current = "home screen"
+				        canvas.before:
+				            Color:
+				                rgba: root.md_bg_color
+				                rgba: 1, 1, 1, 1
+				            Ellipse:
+				                pos: self.x - dp(10/2), self.y - dp(10/2)
+				                size: self.width + dp(10), self.height + dp(10)                               
 
 
 #####################################################################
@@ -577,7 +573,6 @@ MDNavigationLayout:
                         orientation: "vertical"
                         size_hint_y: None
                         height: self.minimum_height
-                        padding: dp(10)
                 
                 Label:
 
@@ -613,7 +608,6 @@ MDNavigationLayout:
                         orientation: "vertical"
                         size_hint_y: None
                         height: self.minimum_height
-                        padding: dp(10)
 				                
                 MDBoxLayout:
                 	orientation: "horizontal"
@@ -685,7 +679,6 @@ MDNavigationLayout:
                         orientation: "vertical"
                         size_hint_y: None
                         height: self.minimum_height
-                        padding: dp(10)
                 
                 MDBoxLayout:
 					orientation: "horizontal"
@@ -757,10 +750,7 @@ MDNavigationLayout:
                         orientation: "vertical"
                         size_hint_y: None
                         height: self.minimum_height
-                        padding: dp(10)
                         
-                 
-                       
                 MDBoxLayout:
                 	orientation: "vertical"
                 	padding: dp(10)
@@ -802,158 +792,7 @@ MDNavigationLayout:
 				            Ellipse:
 				                pos: self.x - dp(10/2), self.y - dp(10/2)
 				                size: self.width + dp(10), self.height + dp(10)
-
-
-##########################################
-############### Playlist Selection Screen ############
-        PlaylistSelect:
-            id: playlist_select
-            name: "playlist select"
-            EffectWidget:
-                effects: [ew.VerticalBlurEffect(size=10), ew.HorizontalBlurEffect(size=10)]
-                
-                FitImage:
-                    #source: "FB_IMG_1580579556493.jpg"
-                
-            MDBoxLayout:
-                orientation: "vertical"
-                
-                MDToolbar:
-                    title: "Select Playlist" 
-                    id: toolbarPS
-                    #md_bg_color: (1, .5, 0, 1)
-                
-                Label:
-                    size_hint_y: .1
-                
-                PlayListPlayRecycleView:
-                    id: rps
-                    viewclass: "OneLineIconListItem"
-                    RecycleBoxLayout:
-                        spacing: dp(10)
-                        padding: dp(10)
-                        orientation: "vertical"
-                        size_hint_y: None
-                        height: self.minimum_height
-                        padding: dp(10)
-                        
-                MDBoxLayout:
-                	orientation: "vertical"
-                	padding: dp(10)
-                
-	                MDBoxLayout:
-	                	orientation: "horizontal"
-	                    size_hint: 1, None
-	                    height: dp(50)
-	                        
-						MDFloatingActionButton:
-							icon: "play"
-	                        size_hint_x: None
-	                        width: dp(50)
-	                        id: play5
-	                        elevation: 10
-	                        on_release: app.dirin_play()
-	                        
-						OneLineAvatarIconListItem:
-							id: music_nameps
-							on_press: app.SCREEN_LIST.append(playlist.name)
-							on_release: root.ids.my_manager.current = "music ui"
-							on_press: root.ids.my_manager.transition.direction = "left"
-                            
-                Widget:
-                    size_hint_y: None
-                    height: dp(50)
-                    
-                    MDFloatingActionButton:
-				        id: float_btn
-				        icon: "chevron-left"
-				        x: toolbarPS.center_x - self.width/2
-				        y: toolbarPS.y - self.height/2
-				        #md_bg_color: (1, .5, 0, 1)
-				        on_release: root.ids.my_manager.current = "music screen"
-				        canvas.before:
-				            Color:
-				                rgba: root.md_bg_color
-				                rgba: 1, 1, 1, 1
-				            Ellipse:
-				                pos: self.x - dp(10/2), self.y - dp(10/2)
-				                size: self.width + dp(10), self.height + dp(10)
-
-
-##########################################
-############### Playlist Content  Screen ############
-        PlaylistPlayScreen:
-            id: playlist_play_select
-            name: "playlist play select"
-            EffectWidget:
-                effects: [ew.VerticalBlurEffect(size=10), ew.HorizontalBlurEffect(size=10)]
-                
-                FitImage:
-                    #source: "FB_IMG_1580579556493.jpg"
-                
-            MDBoxLayout:
-                orientation: "vertical"
-                
-                MDToolbar:
-                    title: "Tinel19" 
-                    id: toolbarPP
-                    #md_bg_color: (1, .5, 0, 1)
-                
-                Label:
-                    size_hint_y: .1
-                
-                PlayListPlaySongRecycleView:
-                    id: rpps
-                    viewclass: "OneLineIconListItem"
-                    RecycleBoxLayout:
-                        spacing: dp(10)
-                        padding: dp(10)
-                        orientation: "vertical"
-                        size_hint_y: None
-                        height: self.minimum_height
-                        
-                MDBoxLayout:
-                	orientation: "vertical"
-                	padding: dp(10)
-                
-	                MDBoxLayout:
-	                	orientation: "horizontal"
-	                    size_hint: 1, None
-	                    height: dp(50)
-	                        
-						MDFloatingActionButton:
-							icon: "play"
-	                        size_hint_x: None
-	                        width: dp(50)
-	                        id: play5
-	                        elevation: 10
-	                        on_release: app.dirin_play()
-	                        
-						OneLineAvatarIconListItem:
-							id: music_nameps
-							#on_press: app.SCREEN_LIST.append(playlist.name)
-							on_release: root.ids.my_manager.current = "music ui"
-							on_press: root.ids.my_manager.transition.direction = "left"
-                            
-                Widget:
-                    size_hint_y: None
-                    height: dp(50)
-                    
-                    MDFloatingActionButton:
-				        id: float_btn
-				        icon: "chevron-left"
-				        x: toolbarPP.center_x - self.width/2
-				        y: toolbarPP.y - self.height/2
-				        #md_bg_color: (1, .5, 0, 1)
-				        on_release: root.ids.my_manager.current = "playlist screen"
-				        canvas.before:
-				            Color:
-				                rgba: root.md_bg_color
-				                rgba: 1, 1, 1, 1
-				            Ellipse:
-				                pos: self.x - dp(10/2), self.y - dp(10/2)
-				                size: self.width + dp(10), self.height + dp(10)
-
+   
                         
 #############################################
 ############# MusicUi Screen ##############                 
@@ -1119,7 +958,7 @@ MDNavigationLayout:
                 MDToolbar:
                     id: toolbars
                     title: "Settings"
-                    #md_bg_color: (1, .5, 0, 1)
+                    md_bg_color: (1, .5, 0, 1)
                     
                 Label:
                     size_hint_y: None
@@ -1144,7 +983,7 @@ MDNavigationLayout:
 				        icon: "home"
 				        x: toolbars.center_x - self.width/2
 				        y: toolbars.y - self.height/2
-				        #md_bg_color: (1, .5, 0, 1)
+				        md_bg_color: (1, .5, 0, 1)
 				        on_release: root.ids.my_manager.current = "home screen"
 				        canvas.before:
 				            Color:
@@ -1315,14 +1154,6 @@ class PlaylistScreen(Screen):
     pass
 
 
-class PlaylistSelect(Screen):
-    pass
-
-
-class PlaylistPlayScreen(Screen):
-    pass
-
-
 class MusicUi(Screen):
     pass
 
@@ -1348,21 +1179,6 @@ class CustomRecycleView(RecycleView):
 
 class PlayListRecycleView(RecycleView):
     pass
-
-
-class PlayListPlayRecycleView(RecycleView):
-    pass
-
-
-class PlayListPlaySongRecycleView(RecycleView):
-    pass
-
-
-class PlayListSelectRecycleView(RecycleView):
-    def __int__(self, **kwargs):
-        super().__init__(**kwargs)
-        pass
-
 
 
 
@@ -1422,39 +1238,33 @@ class CustomIconItem(OneLineAvatarIconListItem):
 
 
     def Playlist(self, txt):
-        
-        app = MDApp.get_running_app()
-        self.dialog.dismiss()
         self.textinput = MDTextField(hint_text="create playlist")
-        
         self.dialog1 = MDDialog(
-            size_hint=(0.85, .3),
+            size_hint=(0.7, .5),
             type="custom",
             content_cls=self.textinput,
             buttons=[
                 MDFlatButton(text="create playlist", on_release=self.create_playlist),
-                MDFlatButton(text="select playlist", on_release=self.back),
-                MDFlatButton(text="close", on_release= self.dialog1_dismiss)
+                MDFlatButton(text="back", on_release=self.back)
             ])
         self.dialog1.open()
 
-    def dialog1_dismiss(self, txt):
-        self.dialog1.dismiss()
-
     def back(self, txt):
-        app = MDApp.get_running_app()
         self.dialog1.dismiss()
         self.dialog.dismiss()
-        app.root.ids.my_manager.current = "playlist select"
 
+        self.dialog2 = MDDialog(
+            size_hint=(0.7, None),height=dp(400),
 
-        data = [{"text": str(app.playlist_list[i]), "size_hint": (1, None), "height": dp(150),
-                 "on_release": lambda x=i: app.add_playlist_to_screen(app.playlist_list[x]),
-                 } for i in range(len(app.playlist_list))]
-        app.root.ids.rps.data = data
+            type="custom",
+            content_cls=TestLayout(),
+            buttons=[MDFlatButton(text="close",
+                                  on_release=self.dialog2_dismiss)]
 
+        )
 
-
+        self.dialog2.open()
+        pass
 
     def dialog2_dismiss(self, txt):
         self.dialog2.dismiss()
@@ -1463,27 +1273,15 @@ class CustomIconItem(OneLineAvatarIconListItem):
         app = MDApp.get_running_app()
 
         if self.textinput.text == "":
-            self.textinput.text = "playlist name empty"
             pass
         else:
             app.playlist_list.append(self.textinput.text)
-            app.playlist_song_add.append(self.textinput.text)
-            #app.PlayList_Append.append(self.textinput.text)
 
-        data = [{"text": str(app.playlist_list[i]), "size_hint": (1, None), "height": dp(150),
-                 "on_release": lambda x=i: app.open_playlist_index(app.playlist_list[x]),
 
-                 }
+        data = [{"text": str(app.playlist_list[i]), "size_hint_x": 1}
                 for i in range(len(app.playlist_list))]
 
         app.root.ids.rp.data = data
-        self.textinput.text = ""
-        
-        if app.playlist_list[-1] == list() or len(app.playlist_list[-1]) >= 1:
-        	pass
-        else:
-        	app.playlist_list[-1] = list()
-        	
 
     def favourite(self, txt):
         app = MDApp.get_running_app()
@@ -1496,7 +1294,7 @@ class CustomIconItem(OneLineAvatarIconListItem):
             app.fav.insert(0, self.text)
             app.fav1.insert(0, self.text)
 
-        data = [{"text": str(app.fav1[i]), "size_hint": (1, None), "height": dp(150),
+        data = [{"text": str(app.fav1[i]), "size_hint_x": 1,
                  "on_release": lambda x=i: app.play_fav(app.fav1[x])}
                 for i in range(len(app.fav))]
 
@@ -1641,11 +1439,10 @@ class PlayMusicDirectory(OneLineAvatarIconListItem):
 class MyScreenManager(ScreenManager):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.transition = NoTransition()
+        # self.transition = NoTransition
         Clock.schedule_once(self.Change, 5)
 
     def Change(self, dt):
-
         self.current = "home screen"
 
 
@@ -1657,9 +1454,6 @@ class TinselPlayer(MDApp):
 
         def __init__(self, **kwargs):
             super().__init__(**kwargs)
-            
-            self.PlayList_Append = []
-            
             self.Music1 = Music1
             self.Music = Music
 
@@ -1674,6 +1468,7 @@ class TinselPlayer(MDApp):
             self.neg = -1
             self.nex = 1
 
+            #
             self.player = Player()
 
             self.SCREEN_LIST = []
@@ -1689,34 +1484,23 @@ class TinselPlayer(MDApp):
             self.rec1 = []
 
             self.playlist_list = []
-            self.playlist_song_add = []
 
         def build(self):
             #self.theme_cls.theme_style = "Dark"
-            app = MDApp.get_running_app()
-
             self.theme_cls.primary_palette = "Orange"
             self.builder = Builder.load_string(Code)
             return self.builder
 
         def on_start(self):
-            data = [{"text": str(Music1[i]), "size_hint": (1, None),"height":dp(100),
+            data = [{"text": str(Music1[i]), "size_hint_x": 1,
                      "on_release": lambda x=i: self.play_music(Music[x], Music1[x]),
                      } for i in range(len(Music))]
             self.root.ids.rv.data = data
 
-            dataff = [{"text": str(music_dir1[i]), "size_hint": (1, None), "height":dp(150),
+            dataff = [{"text": str(music_dir1[i]), "size_hint_x": 1,
                        "on_release": lambda x=i: self.open_folder(music_dir1[x], music_dir[x])
                        } for i in range(len(music_dir))]
             self.root.ids.rff.data = dataff
-
-        def add_playlist_to_screen(self, txt):
-            print(txt)
-            print("HI")
-            
-
-        def open_playlist_index(self, txt):
-            self.root.ids.my_manager.current = "playlist play select"
 
         def UI_BACK(self):
             self.root.ids.my_manager.current = self.SCREEN_LIST[-1]
@@ -1739,7 +1523,7 @@ class TinselPlayer(MDApp):
                         fp.append(os.path.join(root, file))
                         fn.append(file)
 
-            data = [{"text": str(fn[i]), "size_hint": (1, None),"height": dp(100),
+            data = [{"text": str(fn[i]), "size_hint_x": 1,
                      "on_release": lambda x=i: self.play_music_path(fp[x], fn[x])
                      } for i in range(len(fp))]
             self.root.ids.content_music.data = data
@@ -1906,19 +1690,16 @@ class TinselPlayer(MDApp):
             for x in range(len(Music)):
                 y = Music[x]
                 y1 = y.lower()
-                if prior == "" or prior == " " or prior == "   " or prior == "    "  or prior == "       " :
-                	pass
-                else:
-	                if prior in y1:
-	                    self.SM.append(y)
-	                    numx = self.Music.index(y)
-	                    self.SM1.append(Music1[numx])
-	
-	                data = [{"text": str(self.SM1[i]), "size_hint": (1, None), "height": dp(100),
-	                         "on_release": lambda x=i: self.play_search(self.SM[x], self.SM1[x])} for i in
-	                        range(len(self.SM))]
-	
-	                self.root.ids.sf.data = data
+                if prior in y1:
+                    self.SM.append(y)
+                    numx = self.Music.index(y)
+                    self.SM1.append(Music1[numx])
+
+                data = [{"text": str(self.SM1[i]), "size_hint_x": 1,
+                         "on_release": lambda x=i: self.play_search(self.SM[x], self.SM1[x])} for i in
+                        range(len(self.SM))]
+
+                self.root.ids.sf.data = data
 
         #################################################################
         #################################################################
@@ -1961,7 +1742,7 @@ class TinselPlayer(MDApp):
             Clock.schedule_interval(self.reload, 1)
 
         def add_recent(self):
-            data = [{"text": str(self.rec1[i]), "size_hint": (1, None), "height":dp(100),
+            data = [{"text": str(self.rec1[i]), "size_hint_x": 1,
                      "on_release": lambda x=i: self.play_recent(self.rec[x], self.rec1[x])} for i in
                     range(len(self.rec))]
 
@@ -2069,7 +1850,7 @@ class TinselPlayer(MDApp):
                 self.fav.insert(0, self.root.ids.music_name.text)
                 self.fav1.insert(0, self.root.ids.music_name.text)
 
-            data = [{"text": str(self.fav1[i]), "size_hint": (1, None), "height": dp(100),
+            data = [{"text": str(self.fav1[i]), "size_hint_x": 1,
                      "on_release": lambda x=i: self.play_fav(self.fav1[x])} for i in range(len(self.fav))]
 
             self.root.ids.rf.data = data
